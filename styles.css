@@ -34,3 +34,17 @@
   .hero-quiz .quiz-heading p{font-size:14px}
   .hero-quiz .quiz-card{padding:23px 15px}
 }
+
+/* Ajustes de legibilidade e compactação da hero no celular */
+.quiz-card .quiz-title:focus,
+.quiz-card .quiz-title:focus-visible{outline:none!important;box-shadow:none!important}
+.hero.quiz-mode .quiz-title:focus{outline:none!important}
+@media(max-width:860px){
+  .hero:not(.quiz-mode){padding-top:13px}
+  .hero:not(.quiz-mode) .hero-layout{min-height:0}
+}
+@media(max-width:620px){
+  .hero:not(.quiz-mode){padding-top:7px}
+  .hero:not(.quiz-mode) .hero-copy{padding-top:0}
+  .hero:not(.quiz-mode) .hero h1{margin-top:0}
+}
