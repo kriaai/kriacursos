@@ -37,7 +37,7 @@
 </div></header>
 <main>
 <section class="hero" aria-labelledby="hero-title">
- <div class="container hero-layout">
+ <div class="container hero-layout" id="hero-intro">
   <div class="hero-copy">
    <div class="eyebrow"><span class="eyebrow-dot"></span> SUA EVOLUÇÃO COMEÇA AQUI</div>
    <h1 id="hero-title">Não fique pra trás <small>na era da IA,</small><span>aprenda agora pelo WhatsApp.</span></h1>
@@ -60,7 +60,21 @@
    <div class="floating-caption"><svg><use href="#i-spark"/></svg> Conhecimento no seu bolso</div>
   </div>
  </div>
+ <div class="hero-quiz" id="diagnostico" hidden>
+  <div class="container">
+    <div class="hero-quiz-top"><button type="button" class="hero-return" id="exit-diagnosis"><svg><use href="#i-back"/></svg> Voltar à apresentação</button><span class="hero-quiz-label"><svg><use href="#i-spark"/></svg> DIAGNÓSTICO GRATUITO KRIA AI</span></div>
+    <div class="quiz-heading"><span class="section-kicker">SEU PRÓXIMO PASSO</span><h2 id="quiz-heading-title" tabindex="-1">Vamos descobrir o melhor <em>caminho para você.</em></h2><p>Responda 4 perguntas rápidas e receba uma recomendação personalizada, sem sair desta página.</p></div>
+    <div class="quiz-container"><span class="quiz-deco-circle circle-one"></span><span class="quiz-deco-circle circle-two"></span><div class="quiz-card" id="quiz-app" aria-live="polite"></div></div>
+    <div class="quiz-qualities"><span><svg><use href="#i-clock"/></svg> Rápido</span><span><svg><use href="#i-target"/></svg> Objetivo</span><span><svg><use href="#i-spark"/></svg> Recomendação personalizada</span></div>
+  </div>
+ </div>
 </section>
+<section class="section faq-section" id="duvidas"><div class="container faq-layout"><div class="section-heading"><span class="section-kicker">DÚVIDAS?</span><h2>Tudo o que você <em>precisa saber.</em></h2></div><div class="faq-list">
+ <details><summary>Preciso saber alguma coisa de IA antes de começar?</summary><p>Não. O pacote IA para Iniciantes foi pensado para quem está dando os primeiros passos.</p></details>
+ <details><summary>As aulas acontecem pelo WhatsApp?</summary><p>A proposta é receber orientações, aulas e materiais diretamente pelo WhatsApp, de acordo com o formato de cada pacote.</p></details>
+ <details><summary>Como funciona o pagamento?</summary><p>Ao escolher um pacote, você conversa com a equipe Kria AI e recebe as informações e condições de pagamento. O site não processa pagamentos.</p></details>
+ <details><summary>Posso escolher outro pacote depois do diagnóstico?</summary><p>Sim! A recomendação é uma orientação inicial. Você pode conhecer e escolher qualquer um dos três pacotes.</p></details>
+</div></div></section>
 <section class="section steps-section" id="como-funciona"><div class="container">
  <div class="section-heading center"><span class="section-kicker">FÁCIL DE COMEÇAR</span><h2>Aprender IA pode ser <em>mais simples.</em></h2><p>Você só precisa do WhatsApp e da vontade de evoluir.</p></div>
  <div class="steps-grid">
@@ -75,17 +89,7 @@
  <div id="package-grid" class="package-grid"></div>
  <div class="package-note">Não sabe qual escolher? <a href="#diagnostico">Descubra seu pacote ideal gratuitamente <svg><use href="#i-arrow"/></svg></a></div>
 </div></section>
-<section class="section quiz-section" id="diagnostico"><div class="container"><div class="quiz-heading"><span class="section-kicker">DIAGNÓSTICO KRIA AI</span><h2>Vamos descobrir o melhor <em>caminho para você.</em></h2><p>Responda 4 perguntas rápidas e receba uma recomendação feita para o seu momento.</p></div>
- <div class="quiz-container"><span class="quiz-deco-circle circle-one"></span><span class="quiz-deco-circle circle-two"></span><div class="quiz-card" id="quiz-app" aria-live="polite"></div></div>
- <div class="quiz-qualities"><span><svg><use href="#i-clock"/></svg> Rápido</span><span><svg><use href="#i-target"/></svg> Objetivo</span><span><svg><use href="#i-spark"/></svg> Recomendação personalizada</span></div>
-</div></section>
 <section class="section final-section"><div class="container"><div class="final-cta"><div><span class="section-kicker">SEU FUTURO COMEÇA COM UM PASSO</span><h2>A IA não vai esperar. <em>Você também não precisa.</em></h2><p>Comece pelo diagnóstico e descubra o que aprender agora.</p><a href="#diagnostico" class="btn btn-primary btn-large">Quero me qualificar pro futuro <svg><use href="#i-arrow"/></svg></a></div><div class="final-art"><div class="final-orb"><svg><use href="#i-spark"/></svg></div></div></div></div></section>
-<section class="section faq-section" id="duvidas"><div class="container faq-layout"><div class="section-heading"><span class="section-kicker">DÚVIDAS?</span><h2>Tudo o que você <em>precisa saber.</em></h2></div><div class="faq-list">
- <details><summary>Preciso saber alguma coisa de IA antes de começar?</summary><p>Não. O pacote IA para Iniciantes foi pensado para quem está dando os primeiros passos.</p></details>
- <details><summary>As aulas acontecem pelo WhatsApp?</summary><p>A proposta é receber orientações, aulas e materiais diretamente pelo WhatsApp, de acordo com o formato de cada pacote.</p></details>
- <details><summary>Como funciona o pagamento?</summary><p>Ao escolher um pacote, você conversa com a equipe Kria AI e recebe as informações e condições de pagamento. O site não processa pagamentos.</p></details>
- <details><summary>Posso escolher outro pacote depois do diagnóstico?</summary><p>Sim! A recomendação é uma orientação inicial. Você pode conhecer e escolher qualquer um dos três pacotes.</p></details>
-</div></div></section>
 </main>
 <footer class="footer"><div class="container footer-inner"><a class="brand" href="#inicio"><span class="brand-mark"><span></span></span><span>Kria <b>AI</b></span></a><p>Aprenda hoje. Crie o seu amanhã.</p><span>© 2026 Kria AI</span></div></footer>
 <script src="script.js" defer></script>
