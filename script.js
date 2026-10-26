@@ -90,7 +90,7 @@ function showQuestion() {
   quizApp.innerHTML = `
     <div class="quiz-meta"><span>PERGUNTA ${step+1} DE ${QUESTIONS.length}</span><span>DIAGNÓSTICO GRATUITO</span></div>
     <div class="quiz-progress"><span style="width:${Math.round(step/QUESTIONS.length * 100)}%"></span></div>
-    <h3 class="quiz-title">${escapeText(q.title)}</h3>
+    <h3 class="quiz-title" tabindex="-1">${escapeText(q.title)}</h3>
     <div class="quiz-answers">
       ${q.options.map((option, i) => `<button type="button" class="answer-button" data-answer="${i}"><span class="answer-icon">${icon(option.icon)}</span><span>${escapeText(option.label)}</span></button>`).join('')}
     </div>
@@ -103,10 +103,11 @@ function showQuestion() {
       step++;
       if (step < QUESTIONS.length) showQuestion();
       else showResult();
+      keepQuizInView();
     });
   });
   quizApp.querySelector('#quiz-back').addEventListener('click', () => {
-    if(step > 0){step--; showQuestion();}
+    if(step > 0){step--; showQuestion(); keepQuizInView();}
   });
   quizApp.querySelector('#quiz-restart').addEventListener('click', reset);
 }
@@ -124,7 +125,7 @@ function showResult() {
   quizApp.innerHTML = `
     <div class="quiz-meta"><span>SEU RESULTADO</span><span>PERSONALIZADO PARA VOCÊ</span></div>
     <div class="quiz-progress"><span style="width:100%"></span></div>
-    <h3 class="quiz-title">Encontramos seu próximo passo! ✦</h3>
+    <h3 class="quiz-title" tabindex="-1">Encontramos seu próximo passo! ✦</h3>
     <p class="result-intro">Com base nas suas respostas, recomendamos este pacote para começar a se qualificar para o futuro.</p>
     <div class="result-offer">
       <span class="result-tag">★ RECOMENDADO PARA VOCÊ</span>
@@ -137,10 +138,20 @@ function showResult() {
     <div class="quiz-actions"><button type="button" class="back-button" id="quiz-back">${icon('i-back')} Alterar resposta</button><button type="button" class="back-button" id="quiz-restart">Refazer diagnóstico</button></div>
     <p class="quiz-footnote">Esta é uma sugestão baseada nas suas respostas, não uma avaliação profissional.</p>
   `;
-  quizApp.querySelector('#quiz-back').addEventListener('click',()=>{step=QUESTIONS.length-1;showQuestion();});
+  quizApp.querySelector('#quiz-back').addEventListener('click',()=>{step=QUESTIONS.length-1;showQuestion();keepQuizInView();});
   quizApp.querySelector('#quiz-restart').addEventListener('click',reset);
 }
-function reset(){ step=0; answers=[]; showQuestion(); }
+function reset(){ step=0; answers=[]; showQuestion(); if(!heroQuiz?.hidden) keepQuizInView(); }
+function keepQuizInView(){
+  const card = document.getElementById('quiz-app');
+  if(!card) return;
+  // Safari no iPhone: o novo conteúdo substitui o anterior antes de ajustar a rolagem.
+  requestAnimationFrame(() => {
+    const top = Math.max(0, window.scrollY + card.getBoundingClientRect().top - 18);
+    window.scrollTo({top, behavior:'instant'});
+    card.querySelector('.quiz-title')?.focus({preventScroll:true});
+  });
+}
 renderPackages();
 showQuestion();
 
@@ -148,7 +159,6 @@ showQuestion();
 const heroSection = document.querySelector('.hero');
 const heroIntro = document.getElementById('hero-intro');
 const heroQuiz = document.getElementById('diagnostico');
-const quizHeading = document.getElementById('quiz-heading-title');
 let quizWasOpened = false;
 function openHeroDiagnosis(){
   if(!heroIntro || !heroQuiz || !heroSection) return;
@@ -157,7 +167,7 @@ function openHeroDiagnosis(){
   heroSection.classList.add('quiz-mode');
   if(!quizWasOpened){ reset(); quizWasOpened = true; }
   heroSection.scrollIntoView({block:'start',behavior:'smooth'});
-  quizHeading?.focus({preventScroll:true});
+  heroQuiz.querySelector('.quiz-title')?.focus({preventScroll:true});
 }
 function closeHeroDiagnosis(){
   if(!heroIntro || !heroQuiz || !heroSection) return;
