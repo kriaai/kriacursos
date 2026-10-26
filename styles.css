@@ -8,3 +8,29 @@
 @media(max-width:860px){.main-nav{display:none}.nav-cta{margin-left:auto}.hero-layout{grid-template-columns:1fr}.hero{padding:45px 0 20px}.hero h1{font-size:clamp(46px,8.4vw,74px);max-width:690px}.hero-copy>p{max-width:650px}.hero-visual{min-height:565px}.phone-frame{transform:rotate(7deg) scale(.9)}.float-chat{left:10%}.float-book{right:16%}.bot-figure{right:10%}.package-grid{grid-template-columns:1fr 1fr}.package-card:last-child{grid-column:1/-1}.faq-layout{grid-template-columns:1fr}.faq-layout .section-heading{margin-bottom:0}}
 @media(max-width:620px){.container{padding-left:19px;padding-right:19px}.site-header{padding-top:10px}.header-inner{min-height:62px;padding:10px 12px;border-radius:17px}.brand{font-size:25px;gap:8px}.brand-mark{width:35px;height:35px;border-radius:9px}.brand-mark::before{height:21px;width:5px;left:10px}.brand-mark::after{height:18px;width:14px;left:16px}.nav-cta{font-size:11px;padding:10px;gap:6px}.nav-cta svg{display:none}.hero{padding:44px 0 11px}.hero h1{font-size:clamp(42px,12vw,60px)}.hero h1 small{font-size:.85em}.hero-copy>p{font-size:16px}.hero-actions{gap:12px}.hero-actions .btn{width:100%;padding:19px 12px;font-size:14px}.hero-actions .text-link{margin:7px auto 0}.hero-trust{gap:11px;margin-top:20px}.hero-trust span{font-size:10px}.hero-visual{min-height:455px}.phone-frame{transform:rotate(7deg) scale(.72) translate(15px,-38px);transform-origin:center;width:320px;position:absolute;top:-32px}.float-chat{top:12px;left:4%;transform:rotate(-16deg) scale(.62)}.float-book{bottom:65px;right:-14px;transform:rotate(13deg) scale(.68)}.bot-figure{right:0;bottom:-3px;transform:scale(.65) rotate(-5deg);transform-origin:bottom right}.floating-caption{bottom:23px;left:-4px;padding:10px;font-size:10px;max-width:170px;transform:rotate(-5deg)}.floating-caption svg{width:15px;height:15px}.prism-a{top:37px;right:0;transform:scale(.66) rotate(20deg)}.prism-b{bottom:13px;left:5%;transform:scale(.55) rotate(-17deg)}.section{padding:57px 0}.section-heading h2,.quiz-heading h2,.final-cta h2{font-size:36px}.steps-grid,.package-grid{grid-template-columns:1fr}.package-card:last-child{grid-column:auto}.step-card{min-height:auto}.package-card{min-height:auto}.package-card>p{min-height:0}.quiz-card{padding:24px 15px;border-radius:21px;min-height:0}.quiz-title{font-size:27px}.quiz-answers{grid-template-columns:1fr}.answer-button{min-height:71px;font-size:14px}.answer-icon{width:45px;height:45px}.quiz-qualities{gap:10px;justify-content:space-around}.quiz-qualities span{font-size:11px}.quiz-qualities svg{width:16px;height:16px}.result-offer{padding:19px}.result-offer h4{font-size:25px}.final-cta{padding:38px 25px;display:block}.final-art{display:none}.final-cta .btn{width:100%;font-size:14px}.faq-layout{gap:10px}.footer-inner{flex-direction:column;text-align:center;gap:9px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+
+/* KRIA: diagnóstico integrado à hero, sem navegação para outra página */
+[hidden]{display:none!important}
+.hero.quiz-mode{padding:32px 0 88px;min-height:620px}
+.hero-quiz{position:relative;z-index:2;animation:heroQuizEnter .28s ease-out}
+@keyframes heroQuizEnter{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.hero-quiz-top{display:flex;align-items:center;justify-content:space-between;gap:20px;max-width:920px;margin:0 auto 22px}
+.hero-return{display:inline-flex;align-items:center;gap:8px;border:1px solid #7f38cba8;background:#310b61d9;color:#f5eaff;border-radius:15px;padding:11px 17px;font-weight:800;font-size:13px;transition:background .2s}
+.hero-return:hover{background:#512099}
+.hero-return svg{width:18px;height:18px}
+.hero-quiz-label{display:inline-flex;align-items:center;gap:8px;color:#ffa76a;font-size:12px;font-weight:900;letter-spacing:.11em}
+.hero-quiz-label svg{width:19px;height:19px}
+.hero-quiz .quiz-heading{padding-top:5px}
+.hero-quiz .quiz-heading h2:focus{outline:0}
+.hero-quiz .quiz-card{max-width:920px;margin:auto}
+.hero-quiz .quiz-qualities{margin-top:22px}
+@media(max-width:620px){
+  .hero.quiz-mode{padding:14px 0 52px;min-height:0}
+  .hero-quiz-top{margin-bottom:19px;justify-content:flex-start}
+  .hero-quiz-label{display:none}
+  .hero-return{font-size:12px;padding:11px 13px}
+  .hero-quiz .quiz-heading{padding-top:4px;margin-bottom:19px}
+  .hero-quiz .quiz-heading h2{font-size:33px}
+  .hero-quiz .quiz-heading p{font-size:14px}
+  .hero-quiz .quiz-card{padding:23px 15px}
+}
