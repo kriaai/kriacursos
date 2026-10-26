@@ -143,3 +143,37 @@ function showResult() {
 function reset(){ step=0; answers=[]; showQuestion(); }
 renderPackages();
 showQuestion();
+
+/* Iniciar e concluir o quiz sem sair da hero ou abrir outra rota. */
+const heroSection = document.querySelector('.hero');
+const heroIntro = document.getElementById('hero-intro');
+const heroQuiz = document.getElementById('diagnostico');
+const quizHeading = document.getElementById('quiz-heading-title');
+let quizWasOpened = false;
+function openHeroDiagnosis(){
+  if(!heroIntro || !heroQuiz || !heroSection) return;
+  heroIntro.hidden = true;
+  heroQuiz.hidden = false;
+  heroSection.classList.add('quiz-mode');
+  if(!quizWasOpened){ reset(); quizWasOpened = true; }
+  heroSection.scrollIntoView({block:'start',behavior:'smooth'});
+  quizHeading?.focus({preventScroll:true});
+}
+function closeHeroDiagnosis(){
+  if(!heroIntro || !heroQuiz || !heroSection) return;
+  heroQuiz.hidden = true;
+  heroIntro.hidden = false;
+  heroSection.classList.remove('quiz-mode');
+  heroSection.scrollIntoView({block:'start',behavior:'smooth'});
+  document.querySelector('.hero-actions [href="#diagnostico"]')?.focus({preventScroll:true});
+}
+document.querySelectorAll('a[href="#diagnostico"]').forEach(link => {
+  link.addEventListener('click', event => {
+    event.preventDefault();
+    openHeroDiagnosis();
+  });
+});
+document.getElementById('exit-diagnosis')?.addEventListener('click',closeHeroDiagnosis);
+if(window.location.hash === '#diagnostico'){
+  openHeroDiagnosis();
+}
